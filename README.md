@@ -66,7 +66,7 @@ It fulfills the following test criteria from the sprint story:
 ```bash
 # Clone this repository
 git clone https://github.com/Bhumika/Bhumika-NHSBSA.git
-cd projectPath
+cd Bhumika-NHSBSA
 
 # Run in Chrome
 mvn clean test -Dbrowser=chrome
