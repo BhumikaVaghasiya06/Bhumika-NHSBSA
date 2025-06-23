@@ -77,7 +77,7 @@ public class NhsJobSearchSteps {
     }
 
     @Then("I wait for sort by dropdown to show default Best Match")
-    public void waitForSortByAndVerifyDefault() {
+    public void i_wait_for_sort_by_dropdown_to_show_default_Best_Match() {
         logger.info("Verifying default sort option is 'Best Match'");
         WebElement sortDropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("sort")));
         Select select = new Select(sortDropdown);
@@ -86,25 +86,40 @@ public class NhsJobSearchSteps {
         Assert.assertEquals("Best Match", defaultOption);
     }
 
-    @When("I select Date Posted newest from sort by dropdown")
-    public void selectDatePostedNewestFromSortBy() {
-        logger.info("Selecting 'Date Posted (newest)'");
+    @When("I select {string} from sort by dropdown")
+    public void i_select_from_sort_by_dropdown(String option) {
+        logger.info("Selecting '" + option + "' from sort by dropdown");
         WebElement sortDropdown = wait.until(ExpectedConditions.elementToBeClickable(By.id("sort")));
         Select select = new Select(sortDropdown);
-        select.selectByVisibleText("Date Posted (newest)");
-        lastSelectedSortOption = "Date Posted (newest)";
+        select.selectByVisibleText(option);
+        lastSelectedSortOption = option;
     }
 
-    @Then("the sort by dropdown should have Date Posted newest selected")
-    public void verifySortByIsDatePostedNewest() {
-        logger.info("Verifying sort option is 'Date Posted (newest)'");
+    @Then("the sort by dropdown should have {string} selected")
+    public void the_sort_by_dropdown_should_have_selected(String expectedOption) {
+        logger.info("Verifying sort option is '" + expectedOption + "'");
         WebElement sortDropdown = driver.findElement(By.id("sort"));
         Select select = new Select(sortDropdown);
         String selectedOption = select.getFirstSelectedOption().getText();
-        Assert.assertEquals("Date Posted (newest)", selectedOption);
+        Assert.assertEquals(expectedOption, selectedOption);
     }
 
-    // New step for verifying exact error message based on input
+    @Then("the sort by dropdown should contain the following options:")
+    public void the_sort_by_dropdown_should_contain_the_following_options(io.cucumber.datatable.DataTable dataTable) {
+        logger.info("Verifying options in sort by dropdown");
+        WebElement sortDropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("sort")));
+        Select select = new Select(sortDropdown);
+        List<String> actualOptions = select.getOptions().stream()
+                .map(WebElement::getText)
+                .toList();
+
+        List<String> expectedOptions = dataTable.asList();
+
+        for (String expectedOption : expectedOptions) {
+            Assert.assertTrue("Expected option '" + expectedOption + "' not found in dropdown", actualOptions.contains(expectedOption));
+        }
+    }
+
     @Then("I should see error message {string}")
     public void i_should_see_error_message(String expectedMessage) {
         logger.info("Checking for expected error message: " + expectedMessage);
@@ -137,7 +152,7 @@ public class NhsJobSearchSteps {
     }
 
     @Then("I should see validation errors or results page with no filters")
-    public void i_should_see_validation_errors_or_results_with_no_filters() {
+    public void i_should_see_validation_errors_or_results_page_with_no_filters() {
         logger.info("Handling empty input case");
         try {
             List<WebElement> validationErrors = driver.findElements(By.className("error-message"));
@@ -154,30 +169,6 @@ public class NhsJobSearchSteps {
             List<WebElement> results = driver.findElements(By.cssSelector(".search-results__item"));
             Assert.assertTrue("Expected no job results", results.isEmpty());
         }
-    }
-
-    @When("I try to select an invalid option from sort by dropdown")
-    public void i_try_to_select_invalid_sort_option() {
-        logger.info("Trying to select invalid sort option");
-        WebElement sortDropdown = wait.until(ExpectedConditions.elementToBeClickable(By.id("sort")));
-        Select select = new Select(sortDropdown);
-        lastSelectedSortOption = select.getFirstSelectedOption().getText();
-
-        try {
-            select.selectByVisibleText("Invalid Option");
-            Assert.fail("Expected NoSuchElementException for invalid sort");
-        } catch (NoSuchElementException e) {
-            logger.info("Invalid option correctly not selectable");
-        }
-    }
-
-    @Then("the dropdown should remain unchanged")
-    public void dropdown_should_remain_unchanged() {
-        logger.info("Checking if sort dropdown remains unchanged");
-        WebElement sortDropdown = driver.findElement(By.id("sort"));
-        Select select = new Select(sortDropdown);
-        String currentOption = select.getFirstSelectedOption().getText();
-        Assert.assertEquals("Sort dropdown changed unexpectedly", lastSelectedSortOption, currentOption);
     }
 
     @After

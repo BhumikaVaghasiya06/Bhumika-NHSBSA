@@ -615,3 +615,74 @@
 2025-06-23 20:48:56 INFO  NhsJobSearchSteps:160 - Trying to select invalid sort option
 2025-06-23 20:48:56 INFO  NhsJobSearchSteps:169 - Invalid option correctly not selectable
 2025-06-23 20:48:56 INFO  NhsJobSearchSteps:175 - Checking if sort dropdown remains unchanged
+2025-06-23 22:32:35 INFO  NhsJobSearchSteps:25 - Initializing WebDriver and WebDriverWait
+2025-06-23 22:32:38 INFO  NhsJobSearchSteps:32 - Navigating to NHS jobs search page
+2025-06-23 22:32:39 INFO  NhsJobSearchSteps:39 - Entering job title: Nurse
+2025-06-23 22:32:39 INFO  NhsJobSearchSteps:47 - Entering location: London
+2025-06-23 22:32:40 INFO  NhsJobSearchSteps:68 - Clicking on search button
+2025-06-23 22:32:40 INFO  NhsJobSearchSteps:75 - Waiting for results to load
+2025-06-23 22:32:40 INFO  NhsJobSearchSteps:81 - Verifying default sort option is 'Best Match'
+2025-06-23 22:32:40 INFO  NhsJobSearchSteps:91 - Selecting 'Date Posted (newest)' from sort by dropdown
+2025-06-23 22:32:41 INFO  NhsJobSearchSteps:100 - Verifying sort option is 'Date Posted (newest)'
+2025-06-23 22:32:41 INFO  NhsJobSearchSteps:176 - Tearing down WebDriver
+2025-06-23 22:32:42 INFO  NhsJobSearchSteps:25 - Initializing WebDriver and WebDriverWait
+2025-06-23 22:32:43 INFO  NhsJobSearchSteps:32 - Navigating to NHS jobs search page
+2025-06-23 22:32:44 INFO  NhsJobSearchSteps:39 - Entering job title: Doctor
+2025-06-23 22:32:44 INFO  NhsJobSearchSteps:47 - Entering location: London
+2025-06-23 22:32:45 INFO  NhsJobSearchSteps:68 - Clicking on search button
+2025-06-23 22:32:46 INFO  NhsJobSearchSteps:75 - Waiting for results to load
+2025-06-23 22:32:46 INFO  NhsJobSearchSteps:81 - Verifying default sort option is 'Best Match'
+2025-06-23 22:32:46 INFO  NhsJobSearchSteps:91 - Selecting 'Date Posted (newest)' from sort by dropdown
+2025-06-23 22:32:46 INFO  NhsJobSearchSteps:100 - Verifying sort option is 'Date Posted (newest)'
+2025-06-23 22:32:47 INFO  NhsJobSearchSteps:176 - Tearing down WebDriver
+2025-06-23 22:32:47 INFO  NhsJobSearchSteps:25 - Initializing WebDriver and WebDriverWait
+2025-06-23 22:32:49 INFO  NhsJobSearchSteps:32 - Navigating to NHS jobs search page
+2025-06-23 22:32:49 INFO  NhsJobSearchSteps:39 - Entering job title: Nurse
+2025-06-23 22:32:49 INFO  NhsJobSearchSteps:47 - Entering location: London
+2025-06-23 22:32:50 INFO  NhsJobSearchSteps:68 - Clicking on search button
+2025-06-23 22:32:51 INFO  NhsJobSearchSteps:75 - Waiting for results to load
+2025-06-23 22:32:51 INFO  NhsJobSearchSteps:109 - Verifying options in sort by dropdown
+2025-06-23 22:32:51 INFO  NhsJobSearchSteps:176 - Tearing down WebDriver
+2025-06-23 22:32:52 INFO  NhsJobSearchSteps:25 - Initializing WebDriver and WebDriverWait
+2025-06-23 22:32:53 INFO  NhsJobSearchSteps:32 - Navigating to NHS jobs search page
+2025-06-23 22:32:54 INFO  NhsJobSearchSteps:39 - Entering job title: RandomFakeJob
+2025-06-23 22:32:54 INFO  NhsJobSearchSteps:47 - Entering location: London
+2025-06-23 22:32:55 INFO  NhsJobSearchSteps:68 - Clicking on search button
+2025-06-23 22:32:55 INFO  NhsJobSearchSteps:125 - Checking for expected error message: No result found
+2025-06-23 22:32:55 INFO  NhsJobSearchSteps:176 - Tearing down WebDriver
+2025-06-23 22:32:56 INFO  NhsJobSearchSteps:25 - Initializing WebDriver and WebDriverWait
+2025-06-23 22:32:58 INFO  NhsJobSearchSteps:32 - Navigating to NHS jobs search page
+2025-06-23 22:32:58 INFO  NhsJobSearchSteps:39 - Entering job title: Nurse
+2025-06-23 22:32:59 INFO  NhsJobSearchSteps:47 - Entering location: InvalidCity
+2025-06-23 22:33:00 INFO  NhsJobSearchSteps:68 - Clicking on search button
+2025-06-23 22:33:00 INFO  NhsJobSearchSteps:125 - Checking for expected error message: Location not found
+2025-06-23 22:33:10 INFO  NhsJobSearchSteps:176 - Tearing down WebDriver
+2025-06-23 22:33:11 INFO  NhsJobSearchSteps:25 - Initializing WebDriver and WebDriverWait
+2025-06-23 22:33:12 INFO  NhsJobSearchSteps:32 - Navigating to NHS jobs search page
+2025-06-23 22:33:13 INFO  NhsJobSearchSteps:39 - Entering job title: !@#$%^&*()
+2025-06-23 22:33:13 INFO  NhsJobSearchSteps:47 - Entering location: London
+2025-06-23 22:33:14 INFO  NhsJobSearchSteps:68 - Clicking on search button
+2025-06-23 22:33:14 INFO  NhsJobSearchSteps:125 - Checking for expected error message: No result found
+2025-06-23 22:33:15 INFO  NhsJobSearchSteps:176 - Tearing down WebDriver
+2025-06-23 22:33:15 INFO  NhsJobSearchSteps:25 - Initializing WebDriver and WebDriverWait
+2025-06-23 22:33:16 INFO  NhsJobSearchSteps:32 - Navigating to NHS jobs search page
+2025-06-23 22:33:17 INFO  NhsJobSearchSteps:39 - Entering job title: Doctor
+2025-06-23 22:33:17 INFO  NhsJobSearchSteps:47 - Entering location: 1234567890
+2025-06-23 22:33:28 WARN  NhsJobSearchSteps:62 - No location suggestion appeared for: 1234567890
+2025-06-23 22:33:28 INFO  NhsJobSearchSteps:68 - Clicking on search button
+2025-06-23 22:33:29 INFO  NhsJobSearchSteps:125 - Checking for expected error message: Location not found
+2025-06-23 22:33:39 INFO  NhsJobSearchSteps:176 - Tearing down WebDriver
+2025-06-23 22:33:39 INFO  NhsJobSearchSteps:25 - Initializing WebDriver and WebDriverWait
+2025-06-23 22:33:41 INFO  NhsJobSearchSteps:32 - Navigating to NHS jobs search page
+2025-06-23 22:33:42 INFO  NhsJobSearchSteps:39 - Entering job title: !@#$%^&*()
+2025-06-23 22:33:42 INFO  NhsJobSearchSteps:47 - Entering location: 1234567890
+2025-06-23 22:33:53 WARN  NhsJobSearchSteps:62 - No location suggestion appeared for: 1234567890
+2025-06-23 22:33:53 INFO  NhsJobSearchSteps:68 - Clicking on search button
+2025-06-23 22:33:53 INFO  NhsJobSearchSteps:125 - Checking for expected error message: Location not found
+2025-06-23 22:34:03 INFO  NhsJobSearchSteps:176 - Tearing down WebDriver
+2025-06-23 22:34:04 INFO  NhsJobSearchSteps:25 - Initializing WebDriver and WebDriverWait
+2025-06-23 22:34:05 INFO  NhsJobSearchSteps:32 - Navigating to NHS jobs search page
+2025-06-23 22:34:06 INFO  NhsJobSearchSteps:68 - Clicking on search button
+2025-06-23 22:34:06 INFO  NhsJobSearchSteps:156 - Handling empty input case
+2025-06-23 22:34:07 WARN  NhsJobSearchSteps:168 - Fallback to checking no results
+2025-06-23 22:34:07 INFO  NhsJobSearchSteps:176 - Tearing down WebDriver
