@@ -149,7 +149,7 @@ Feature: NHS Job Search Functionality
       @unhappy
   Scenario: Unhappy path - Invalid input returns no suggestions
     When I enter "Tester" into the what field
-    And I enter "XYZ123" into the location field
+    And I enter "XYZ1234567" into the location field
     Then I should see no suggestions
 
 
