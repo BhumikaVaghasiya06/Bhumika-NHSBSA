@@ -15,6 +15,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <surefire.plugin.version>3.0.0-M7</surefire.plugin.version>
         <cucumber.version>7.14.0</cucumber.version>
+
+        <!-- DEFAULT values to avoid unresolved property errors -->
+        <cucumber.filter.tags>@ui</cucumber.filter.tags>
+        <browser>chrome</browser>
     </properties>
 
     <dependencies>
@@ -91,17 +95,19 @@
                 </configuration>
             </plugin>
 
-            <!-- Surefire plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${surefire.plugin.version}</version>
                 <configuration>
+                    <includes>
+                        <include>**/*TestRunner.java</include> <!-- include runner -->
+                        <include>**/*Tests.java</include>
+                        <include>**/*Test.java</include>
+                    </includes>
                     <systemPropertyVariables>
-                        <!--suppress UnresolvedMavenProperty -->
-                        <browser>${browser}</browser>
-                        <!--suppress UnresolvedMavenProperty -->
                         <cucumber.filter.tags>${cucumber.filter.tags}</cucumber.filter.tags>
+                        <browser>${browser}</browser>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
