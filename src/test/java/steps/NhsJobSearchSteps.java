@@ -317,13 +317,14 @@ public class NhsJobSearchSteps {
         suggestions = driver.findElements(By.cssSelector("#location__listbox li"));
         Assert.assertTrue("Expected suggestions, but none found", suggestions.size() > 0);
 
-        List<String> actualTexts = suggestions.stream()
-                .map(WebElement::getText)
-                .collect(Collectors.toList());
+        List<String> actualTexts = new ArrayList<>();
+        for (WebElement element : suggestions) {
+        actualTexts.add(element.getText());
+        }
 
         for (String text : actualTexts) {
-            Assert.assertTrue("Suggestion '" + text + "' does not contain: " + input,
-                    text.toLowerCase().contains(input.toLowerCase()));
+        Assert.assertTrue("Suggestion '" + text + "' does not contain: " + input,
+                text.toLowerCase().contains(input.toLowerCase()));
         }
 
         logger.info("Suggestions matching input '" + input + "': " + actualTexts);
@@ -333,12 +334,12 @@ public class NhsJobSearchSteps {
     public void i_select_from_the_suggestions(String desiredText) {
         boolean selected = false;
         for (WebElement suggestion : suggestions) {
-            if (suggestion.getText().equalsIgnoreCase(desiredText)) {
-                suggestion.click();
-                logger.info("Selected suggestion: " + desiredText);
-                selected = true;
-                break;
-            }
+        if (suggestion.getText().equalsIgnoreCase(desiredText)) {
+            suggestion.click();
+            logger.info("Selected suggestion: " + desiredText);
+            selected = true;
+            break;
+        }
         }
         Assert.assertTrue("Could not find desired suggestion: " + desiredText, selected);
     }
@@ -355,7 +356,6 @@ public class NhsJobSearchSteps {
         WebDriver driver = DriverFactory.getDriver();
         if (driver != null) {
             driver.quit();
-            // reset driver in DriverFactory if needed
             DriverFactory.quitDriver();
         }
     }
