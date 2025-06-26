@@ -51,12 +51,12 @@ NHSBSA/
 │   └── test/
 │       ├── java/
 │       │   ├── runners/
-│       │   │   └── TestRunner.java          # Cucumber test runner
+│       │   │   └── NHSTestRunner.java          # Cucumber test runner
 │       │   ├── steps/
 │       │   │   └── NhsJobSearchSteps.java   # Step definitions for NHS search
 │       └── resources/
 │           ├── features/
-│           │   └── nhs_search.feature       # BDD feature file
+│           │   └── NHSJobSearch.feature       # BDD feature file
 │           └── logs/
 │               └── log4j.properties         # Log4j configuration
 │
@@ -165,10 +165,11 @@ You can switch `-Dbrowser=chrome` to `firefox` as needed.
 - ✅ Introduce accessibility checks using Axe or Lighthouse
 - ✅ Extend with API-level validations (if APIs are exposed)
 - ✅ Dockerize test execution for container-based pipelines
-- ✅ Generate dynamic test data using Faker
+- ✅ Generate dynamic test data by reading from CSV or Excel files for flexible and maintainable test inputs
 - ✅ Add retry mechanism for flaky steps
 - ✅ Integrate with Allure for rich test reporting
 - ✅ Enable test result email notifications after execution
+- ✅ Use AWS S3 bucket to securely store and manage test execution reports for easy access and archival
 
 ---
 
