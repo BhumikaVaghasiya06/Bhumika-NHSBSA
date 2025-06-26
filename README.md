@@ -1,75 +1,179 @@
-# NHS Jobs Search Automation Suite - BhumikaVaghasiya-NHSBSA
+# 🧪 NHS Jobs Search Automation Suite – `BhumikaVaghasiya-NHSBSA`
 
-## 🔍 Project Objective
+## 🔍 Project Overview
 
-This project automates the **Search functionality** of the NHS Jobs website (https://www.jobs.nhs.uk/candidate/search) using **User-Centric BDD** with Cucumber, Selenium, and Java 21.  
-
-It fulfills the following test criteria from the sprint story:
-
-- Search using "What" and "Where"
-- View job results
-- Sort the results by **Date Posted (Newest)**
+This project automates the **Search functionality** of the [NHS Jobs website](https://www.jobs.nhs.uk/candidate/search) using a **User-Centric BDD approach** with **Java 21**, **Selenium WebDriver**, **Cucumber**, and **JUnit**. It is built to validate job search behaviors across various user scenarios, supporting both functional and cross-browser validation.
 
 ---
 
-## 📄 User Story
+## 📘 User Story
 
-**As a** jobseeker on the NHS Jobs website  
-**I want to** search for a job with my preferences  
-**So that** I can get recently posted job results  
+> **As a jobseeker on the NHS Jobs website**  
+> I want to search for a job with my preferences  
+> So that I can get recently posted job results
 
-### ✅ Acceptance Criteria
+---
+
+## ✅ Acceptance Criteria
 
 - **Given** I am a jobseeker on NHS Jobs website  
-- **When** I enter my preferences in the Search functionality  
-- **Then** I should get a list of jobs which match my preferences  
-- **And** sort my search results with the newest Date Posted  
-
----
-
-## ✅ Test Coverage
-
-| Feature | Status |
-|--------|--------|
-| Enter job title and location | ✅ |
-| Click Search and wait for results | ✅ |
-| Validate search results contain expected text | ✅ |
-| Sort results by "Date Posted (newest)" | ✅ |
-| Cross-browser: Chrome & Firefox | ✅ |
+- **When** I enter my preferences into the search functionality  
+- **Then** I should get a list of jobs that match my preferences  
+- **And** I can sort my results by Date Posted (newest)
 
 ---
 
 ## 💻 Tech Stack
 
-| Tool            | Purpose                            |
-|-----------------|------------------------------------|
-| Java 21         | Programming language               |
-| Maven           | Dependency and build management    |
-| Selenium        | UI automation                      |
-| Cucumber (Gherkin) | BDD framework                 |
-| WebDriverManager | Driver management (no local drivers) |
-| Log4j           | Logging output                     |
-| JUnit           | Test runner                        |
+| Technology         | Purpose                                        |
+|--------------------|------------------------------------------------|
+| Java 21            | Programming language                           |
+| Maven              | Build and dependency management                |
+| Selenium WebDriver | Web automation library                         |
+| Cucumber (Gherkin) | BDD test framework                             |
+| JUnit              | Test runner integration                        |
+| WebDriverManager   | Driver management for Chrome & Firefox         |
+| Log4j              | Logging of test execution                      |
+
+---
+
+## 📂 Project Structure
+
+```
+NHSBSA/
+├── src/
+│   ├── main/
+│   │   └── java/
+│   │       └── utils/
+│   │           ├── DriverFactory.java       # WebDriver setup (Chrome/Firefox)
+│   │           └── LoggerHelper.java        # Log4j configuration
+│
+│   └── test/
+│       ├── java/
+│       │   ├── runners/
+│       │   │   └── TestRunner.java          # Cucumber test runner
+│       │   ├── steps/
+│       │   │   └── NhsJobSearchSteps.java   # Step definitions for NHS search
+│       └── resources/
+│           ├── features/
+│           │   └── nhs_search.feature       # BDD feature file
+│           └── logs/
+│               └── log4j.properties         # Log4j configuration
+│
+├── logs/
+│   └── automation.log                       # Execution logs
+├── pom.xml                                  # Maven build config
+└── README.md                                # Project documentation
+```
+
+---
+
+## 🎯 Test Coverage
+
+This suite thoroughly validates the **Search functionality** with a wide range of test scenarios:
+
+### 🔹 Functional Scenarios
+
+- ✅ Job search with title, location, distance, reference, employer, and pay range
+- ✅ Validation of dropdown selections and input field retention
+- ✅ Search results sorting by "Date Posted (newest)"
+- ✅ Clear filters and reset behavior
+- ✅ Field hint and placeholder validations
+- ✅ Search with all fields empty
+
+### 🔹 UI Validations
+
+- ✅ Default selections in dropdowns (Distance, Pay Range, Sort By)
+- ✅ Dynamic enabling/disabling of Distance dropdown based on Location
+- ✅ Suggestions for valid/invalid location input
+- ✅ Error message display for invalid inputs
+
+### 🔹 Negative and Edge Cases
+
+- ✅ Misspelled or numeric locations
+- ✅ Invalid job references and fake employers
+- ✅ Special characters and mixed input in search fields
+- ✅ No suggestions shown for unsupported input
+
+### 🔹 Cross-Browser Support
+
+- ✅ Tests run in **Chrome**
+- ✅ Tests run in **Firefox**
+- ✅ No machine-bound drivers (WebDriverManager handles setup dynamically)
 
 ---
 
 ## ⚙️ How to Run the Tests
 
-### Prerequisites
+### 🔧 Prerequisites
 
-- **Java 21+** installed
-- **Maven 3+** installed
+- Java 21+
+- Maven 3.8+
 - Internet connection
 
-### Clone and Run the Project
+### 📥 Clone the Repository
 
 ```bash
-# Clone this repository
 git clone https://github.com/Bhumika/Bhumika-NHSBSA.git
 cd Bhumika-NHSBSA
+```
 
-# Run in Chrome
+### ▶️ Run All Tests
+
+#### Run in Chrome:
+
+```bash
 mvn clean test -Dbrowser=chrome
+```
 
-# Run in Firefox
+#### Run in Firefox:
+
+```bash
 mvn clean test -Dbrowser=firefox
+```
+
+
+### 🎯 Run Tests by Tags
+
+| Tag Combination            | Command                                                                 |
+|----------------------------|-------------------------------------------------------------------------|
+| Only happy path tests      | mvn clean test "-Dcucumber.filter.tags=@happy" "-Dbrowser=chrome"     |
+| Only UI validation tests   | mvn clean test "-Dcucumber.filter.tags=@ui" "-Dbrowser=chrome"        |
+| Only negative tests        | mvn clean test "-Dcucumber.filter.tags=@unhappy" "-Dbrowser=chrome"   |
+| Happy + UI tests           | mvn clean test "-Dcucumber.filter.tags=@happy or @ui" "-Dbrowser=chrome" |
+| All tests                  | mvn clean test "-Dcucumber.filter.tags=@happy or @ui or @unhappy" "-Dbrowser=chrome" |
+
+You can switch `-Dbrowser=chrome` to `firefox` as needed.
+
+---
+
+## 🧾 Test Reports & Logs
+
+- **HTML Report**:  
+  `target/cucumber-reports/report.html`
+
+- **Log File**:  
+  `logs/automation.log`
+
+---
+
+## 🌱 Enhancements (Future Work)
+
+- ✅ Add parallel execution with Cucumber-JUnit or Cucumber-TestNG
+- ✅ Add support for headless browser execution for CI pipelines
+- ✅ Integrate with BrowserStack or Sauce Labs for broader browser/device coverage
+- ✅ Introduce accessibility checks using Axe or Lighthouse
+- ✅ Extend with API-level validations (if APIs are exposed)
+- ✅ Dockerize test execution for container-based pipelines
+- ✅ Generate dynamic test data using Faker
+- ✅ Add retry mechanism for flaky steps
+- ✅ Integrate with Allure for rich test reporting
+- ✅ Enable test result email notifications after execution
+
+---
+
+## 👤 Author
+
+**Bhumika Vaghasiya**  
+📧 [bhumigoti4@gmail.com]  
+🔗 [https://github.com/Bhumika/Bhumika-NHSBSA](https://github.com/Bhumika/Bhumika-NHSBSA)
